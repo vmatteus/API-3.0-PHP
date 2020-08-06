@@ -26,6 +26,10 @@ class Browser implements \JsonSerializable, CieloSerializable
     /** @var string $type */
     private $type;
 
+    /** @var string $browserFingerPrint */
+    private $browserFingerPrint;
+
+
      /**
      * Browser constructor.
      *
@@ -48,11 +52,12 @@ class Browser implements \JsonSerializable, CieloSerializable
     */
     public function populate(\stdClass $data)
     {
-        $this->cookiesAccepted   = isset($data->CookiesAccepted) ? $data->CookiesAccepted : null;
-        $this->email             = isset($data->Email) ? $data->Email : null;
-        $this->hostName          = isset($data->HostName) ? $data->HostName : null;
-        $this->ipAddress         = isset($data->IpAddress) ? $data->IpAddress : null;
-        $this->type              = isset($data->Type) ? $data->Type : null;
+        $this->cookiesAccepted    = isset($data->CookiesAccepted) ? $data->CookiesAccepted : null;
+        $this->email              = isset($data->Email) ? $data->Email : null;
+        $this->hostName           = isset($data->HostName) ? $data->HostName : null;
+        $this->ipAddress          = isset($data->IpAddress) ? $data->IpAddress : null;
+        $this->type               = isset($data->Type) ? $data->Type : null;
+        $this->browserFingerPrint = isset($data->BrowserFingerPrint) ? $data->BrowserFingerPrint : null;
     }
 
     /**
@@ -151,7 +156,24 @@ class Browser implements \JsonSerializable, CieloSerializable
     public function setType($type)
     {
         $this->type = $type;
+        return $this;
+    }
 
+    /**
+     * @return string
+     */
+    public function getBrowserFingerPrint()
+    {
+        return $this->browserFingerPrint;
+    }
+
+    /**
+     * @param string $browserFingerPrint
+     * @return $this
+     */
+    public function setBrowserFingerPrint($browserFingerPrint)
+    {
+        $this->browserFingerPrint = $browserFingerPrint;
         return $this;
     }
 }
