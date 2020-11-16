@@ -126,6 +126,8 @@ abstract class AbstractRequest
     {
         $unserialized = null;
 
+        $responseBody = @gzdecode($responseBody) ?: $responseBody;
+
         switch ($statusCode) {
             case 200:
             case 201:
